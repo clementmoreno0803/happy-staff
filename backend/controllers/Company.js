@@ -35,8 +35,10 @@ exports.updateCompany = async (req, res) => {
 }
 
 // Supprimer une company
-exports.removeCompany = (req, res) => {
-  Company.delete({ company_id: req.params.id })
-    .then(company => res.status(200).json(company))
-    .catch(error => res.status(500).json({ error: error.message }))
+exports.removeCompany = async (req, res) => {
+  const { id } = req.params;
+  const company = await Company.findByPk(id);
+  await company.destroy()
+    .then(res.json({ message: "Company supprimé avec succès." }))
+    .catch(error => res.status(404).json({ message: error }))
 }
