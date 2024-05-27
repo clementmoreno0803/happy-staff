@@ -24,9 +24,47 @@
 
 ## Schéma BDD
 
- # 1 candidat peut postuler à plusieurs offres
- # 1 entreprise peut présenter plusieurs offres
- # Plusieurs entreprise peuvent présenter plusieurs offres
+# Utilisateurs (Users)
+
+# user_id (Primary Key)
+# username
+# email
+# password
+# created_at
+# updated_at
+# Entreprises (Companies)
+#
+# company_id (Primary Key)
+# name
+# description
+# location
+# website
+# created_at
+# updated_at
+# Offres d'emploi (JobOffers)
+#
+# job_id (Primary Key)
+# title
+# description
+# requirements
+# location
+# salary
+# company_id (Foreign Key, References Companies)
+# created_at
+# updated_at
+# Candidatures (Applications)
+#
+# application_id (Primary Key)
+# user_id (Foreign Key, References Users)
+# job_id (Foreign Key, References JobOffers)
+# status
+# applied_at
+# Relations
+# Users peut avoir plusieurs Applications.
+# Companies peut avoir plusieurs JobOffers.
+# JobOffers peut avoir plusieurs Applications.
+# Applications relie Users et JobOffers (table de jonction).
+
 
 
 ## Frontend
@@ -43,3 +81,4 @@
 # 6 - Créer un dashboard pour les candidats et entreprises
   # 6.1 - Candidats => Voir les offres auquels ils ont postulés
   # 6.2 - Entreprises => Voir qui a postulé aux offres
+# happy-staff
