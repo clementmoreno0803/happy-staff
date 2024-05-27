@@ -3,7 +3,9 @@ const app = express();
 const sequelize = require('./config/database');
 const models = require('./models');
 const applicationRoutes = require('./routes/applications');
-const userRoute = require('./routes/user')
+const userRoute = require('./routes/user');
+const jobOfferRoute = require('./routes/jobOffer');
+const companyRoute = require('./routes/company');
 
 // Configurer les middlewares
 app.use(express.json());
@@ -17,7 +19,9 @@ app.use((req, res, next) => {
 
 // Utiliser les routes
 app.use('/applications', applicationRoutes);
-app.use('/user', userRoute)
+app.use('/user', userRoute);
+app.use('/jobOffer', jobOfferRoute);
+app.use('/company', companyRoute);
 
 // Synchroniser les modèles et démarrer le serveur
 sequelize.sync({ force: true }).then(() => {  // force: true réinitialise les tables
