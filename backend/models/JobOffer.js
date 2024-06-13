@@ -29,6 +29,14 @@ const JobOffer = sequelize.define('JobOffer', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+    company_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: "JobOffer",
+      key: 'job_id',
+    },
+  },
   created_at: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,
