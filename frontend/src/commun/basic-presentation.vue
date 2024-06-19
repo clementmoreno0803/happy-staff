@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { computed, defineProps } from "vue";
-import type { BasicPresentation } from "@/models/basic-presentation";
+import type { BasicPresentation } from "@/models/BasicPresentation";
 
 const props = defineProps<BasicPresentation>();
 
@@ -28,6 +28,8 @@ const backgroundStyle = computed(() => ({
     height: 80vh;
     border-radius: 2rem;
     background-size: cover;
+    display: flex;
+    flex-direction: row-reverse;
   }
   &__content {
     width: 50%;
