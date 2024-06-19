@@ -25,19 +25,21 @@ const backgroundStyle = computed(() => ({
     position: relative;
     width: 95vw;
     margin: 0 auto;
-    height: 80vh;
     border-radius: 2rem;
-    background-size: cover;
     display: flex;
     flex-direction: row-reverse;
+    height: 100%;
   }
   &__content {
     width: 50%;
-    height: 100%;
+    height: auto;
+    min-height: 70vh;
     border-radius: 1rem;
     background: $primary-color;
-    position: absolute;
-    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 </style>

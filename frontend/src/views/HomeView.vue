@@ -89,10 +89,10 @@ const urlImg = ref(chefImage);
       flex-direction: column;
       justify-content: space-between;
       padding: $l $xxl;
-      height: -webkit-fill-available;
+      height: 100%;
       & h2 {
         font-family: $poppins;
-        font-size: 4rem;
+        font-size: clamp($l, 3vw, 25rem);
         font-weight: $bold;
         text-align: left;
         line-height: 1.2;

@@ -34,7 +34,6 @@
             class="presentation-grid__equipe__card__background-image"
             :style="{
               backgroundImage: `url(${equipe.photo})`,
-              backgroundSize: '40vw',
             }"
           ></div>
           <div class="presentation-grid__equipe__description">
@@ -227,6 +226,7 @@ watchEffect(() => {
       width: 90vw;
       &__background-image {
         width: 70%;
+        height: 100%;
         border-bottom-left-radius: 0.5rem;
         border-top-left-radius: 0.5rem;
         background-position-y: 30%;
