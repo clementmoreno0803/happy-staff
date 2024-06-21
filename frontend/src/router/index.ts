@@ -14,7 +14,9 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/HappyCandidat.vue"),
+      import(
+        /* webpackChunkName: "HappyCandidat" */ "@/views/HappyCandidat.vue"
+      ),
     props: true,
   },
   {
@@ -24,7 +26,7 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/NosOffres.vue"),
+      import(/* webpackChunkName: "NosOffres" */ "@/views/NosOffres.vue"),
   },
   {
     path: "/espace-employeur/:id",
@@ -33,7 +35,9 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/EspaceEmployeur.vue"),
+      import(
+        /* webpackChunkName: "EspaceEmployeur" */ "../views/EspaceEmployeur.vue"
+      ),
     props: true,
   },
   {
@@ -43,7 +47,9 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/EspaceContact.vue"),
+      import(
+        /* webpackChunkName: "EspaceContact" */ "../views/EspaceContact.vue"
+      ),
     props: true,
   },
   {

@@ -1,5 +1,8 @@
 <template>
-  <div class="about">
-    <h1>This is an contact page</h1>
+  <div>
+    <formulaire-contact></formulaire-contact>
   </div>
 </template>
+<script setup lang="ts">
+import formulaireContact from "@/components/contact/formulaire-contact.vue";
+</script>

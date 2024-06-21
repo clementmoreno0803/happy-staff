@@ -10,6 +10,7 @@
     height: 500px;
     width: 100vw;
     background-color: #597290;
+    margin-top: $xxl;
   }
 }
 </style>
