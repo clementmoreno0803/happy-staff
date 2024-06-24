@@ -12,6 +12,11 @@ const Company = sequelize.define('Company', {
     allowNull: false,
     required: true
   },
+  numero_siret: {
+    type: DataTypes.STRING,
+    required: true,
+    allowNull: false,
+  },
   description: {
     type: DataTypes.STRING,
     allowNull: false,

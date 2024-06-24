@@ -43,7 +43,7 @@ app.post('/send-email', (req, res) => {
   const mailOptions = {
     from: email,
     to: process.env.GMAIL_ADRESSE,
-    subject: 'New Contact Form Submission',
+    subject: 'Vous avez un nouveau potentiel candidat',
     text: `Vous avez un nouveau message de ${name}, pour un poste de ${poste}
     Il souhaiterait être recontacté via ${preference}, le ${meeting}.
     Ses coordonnées téléphoniques sont ${tel} et email ${email}.`,
