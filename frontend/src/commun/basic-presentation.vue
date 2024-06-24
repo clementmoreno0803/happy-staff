@@ -14,8 +14,9 @@ const props = defineProps<BasicPresentation>();
 
 const backgroundStyle = computed(() => ({
   backgroundImage: `url(${props.backgroundUrl})`,
-  backgroundSize: "50%",
+  backgroundSize: "60%",
   backgroundPositionY: "center",
+  backgroundPositionX: "left",
 }));
 </script>
 

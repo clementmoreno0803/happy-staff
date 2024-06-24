@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
-    <h1>This is an offres page</h1>
+  <div class="nosOffres__container">
+    <h1>Nos offres</h1>
   </div>
 </template>

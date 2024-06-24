@@ -23,7 +23,7 @@
           />
           <label :for="option.value">{{ option.value }}</label>
         </div>
-        <ErrorMessage name="poste" />
+        <ErrorMessage name="poste" class="errorMessage" />
       </div>
       <!-- Nom -->
       <legend>
@@ -37,7 +37,7 @@
         rules="required"
         v-model="formData.name"
       />
-      <ErrorMessage name="name" />
+      <ErrorMessage name="name" class="errorMessage" />
 
       <!-- Email -->
       <legend>
@@ -51,7 +51,7 @@
         v-model="formData.email"
         rules="required|email"
       />
-      <ErrorMessage name="email" />
+      <ErrorMessage name="email" class="errorMessage" />
       <!-- numero de telephone -->
       <legend>
         <span class="formulaire-contact__topic-number">04. </span>Quel est votre
@@ -64,7 +64,7 @@
         v-model="formData.tel"
         rules="required|tel"
       />
-      <ErrorMessage name="tel" />
+      <ErrorMessage name="tel" class="errorMessage" />
 
       <!-- numero de telephone -->
       <legend>
@@ -79,36 +79,48 @@
         v-model="formData.meeting"
         rules="required"
       />
-      <ErrorMessage name="meeting" />
+      <ErrorMessage name="meeting" class="errorMessage" />
 
       <!-- préférence de communication -->
-      <legend>
-        <span class="formulaire-contact__topic-number">04. </span>Vous êtes
-        plutôt email ou téléphone ?
-      </legend>
-      <label
-        for="preference"
-        class="switch-label"
-        :class="{ notChecked: formData.preference == 'Téléphone' }"
+      <div>
+        <legend>
+          <span class="formulaire-contact__topic-number">04. </span>Vous êtes
+          plutôt email ou téléphone ?
+        </legend>
+        <label
+          for="preference"
+          class="switch-label"
+          :class="{ notChecked: formData.preference == 'Téléphone' }"
+        >
+          <span class="switch-switch">Téléphone</span>
+        </label>
+        <Field
+          type="checkbox"
+          name="preference"
+          id="preference"
+          v-model="formData.preference"
+          value="Email"
+          unchecked-value="Téléphone"
+        />
+        <label
+          for="preference"
+          class="switch-label"
+          :class="{ isChecked: formData.preference === 'Email' }"
+        >
+          <span class="switch-switch">Email</span>
+        </label>
+      </div>
+      <button
+        type="submit"
+        class="submitButton"
+        :style="
+          formData.preference === 'Téléphone'
+            ? { border: '1px #00AD40 solid', backgroundColor: '#00AD40' }
+            : { border: '1px #004AAD solid', backgroundColor: '#004AAD' }
+        "
       >
-        <span class="switch-switch">Téléphone</span>
-      </label>
-      <Field
-        type="checkbox"
-        name="preference"
-        id="preference"
-        v-model="formData.preference"
-        value="Email"
-        unchecked-value="Téléphone"
-      />
-      <label
-        for="preference"
-        class="switch-label"
-        :class="{ isChecked: formData.preference === 'Email' }"
-      >
-        <span class="switch-switch">Email</span>
-      </label>
-      <button type="submit">Envoyer</button>
+        Envoyer
+      </button>
     </div>
   </Form>
 </template>
@@ -125,7 +137,7 @@ const { sendFormulaireContact } = UseFormulaireContact();
 
 defineRule("required", (value: string) => {
   if (!value || !value.length) {
-    return "This field is required";
+    return "Ce champ est obligatoire";
   }
   return true;
 });
@@ -136,7 +148,7 @@ defineRule("email", (value: string) => {
   }
   // Check if email
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-    return "This field must be a valid email";
+    return "Veuillez rentrer un email valide s'il vous plaît";
   }
   return true;
 });
@@ -173,6 +185,8 @@ const selectOption = ref<SelectOption[]>([
   width: 80vw;
   margin: 0 auto;
   text-align: left;
+  display: flex;
+  flex-direction: column;
   input[type="text"],
   input[type="datetime-local"] {
     appearance: none;
@@ -198,8 +212,6 @@ const selectOption = ref<SelectOption[]>([
   }
   &__radio-button {
     display: flex;
-    // width: 50vw;
-    margin: 0 auto;
     justify-content: flex-start;
     gap: 30px;
     &__item {
@@ -234,10 +246,25 @@ const selectOption = ref<SelectOption[]>([
     }
   }
   .notChecked {
-    color: green;
+    color: $third-color;
   }
   .isChecked {
+    color: $forth-color;
+  }
+  .errorMessage {
     color: red;
+    font-size: $sm;
+    font-weight: $normal;
+  }
+  .submitButton {
+    font-size: $xs;
+    border-radius: $xs;
+    padding: $sm $sm;
+    color: white;
+    cursor: pointer;
+    font-weight: $bold;
+    width: 3 * $xxl;
+    margin-top: $xxl;
   }
 }
 </style>
