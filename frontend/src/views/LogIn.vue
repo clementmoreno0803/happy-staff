@@ -9,6 +9,7 @@
               Veuillez renseigner vos informations
             </p>
           </div>
+          <formulaireLogin></formulaireLogin>
         </div>
       </template>
     </BasicPresentation>
@@ -18,6 +19,7 @@
 <script setup lang="ts">
 import BasicPresentation from "@/commun/basic-presentation.vue";
 import cuisineImage from "@/assets/background-image/cuisine.jpg";
+import formulaireLogin from "@/components/login/formulaire-login.vue";
 import { ref } from "vue";
 
 const urlImg = ref(cuisineImage);
