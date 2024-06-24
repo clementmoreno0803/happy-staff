@@ -6,8 +6,8 @@ const applicationRoutes = require('./routes/applications');
 const userRoute = require('./routes/user');
 const jobOfferRoute = require('./routes/jobOffer');
 const companyRoute = require('./routes/company');
+const nodemailer = require('nodemailer');
 
-// Configurer les middlewares
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -17,11 +17,45 @@ app.use((req, res, next) => {
   next();
 });
 
-// Utiliser les routes
 app.use('/applications', applicationRoutes);
 app.use('/user', userRoute);
 app.use('/jobOffer', jobOfferRoute);
 app.use('/company', companyRoute);
+
+// Envoie des mails sur Gmail
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_ADRESSE,
+    pass: process.env.GMAIL_PASSWORD
+  },
+});
+
+// Route pour gérer l'envoi du formulaire
+app.post('/send-email', (req, res) => {
+  const { poste,
+  email,
+  name,
+  tel,
+  meeting,
+  preference} = req.body;
+
+  const mailOptions = {
+    from: email,
+    to: process.env.GMAIL_ADRESSE,
+    subject: 'New Contact Form Submission',
+    text: `Vous avez un nouveau message de ${name}, pour un poste de ${poste}
+    Il souhaiterait être recontacté via ${preference}, le ${meeting}.
+    Ses coordonnées téléphoniques sont ${tel} et email ${email}.`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return res.status(500).send(error.toString());
+    }
+    res.status(200).send('Email sent: ' + info.response);
+  });
+});
 
 // Synchroniser les modèles et démarrer le serveur
 sequelize.sync({ force: true }).then(() => {  // force: true réinitialise les tables

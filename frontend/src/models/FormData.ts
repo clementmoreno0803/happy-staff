@@ -4,5 +4,5 @@ export interface FormData {
   email: string;
   tel: string;
   meeting: string;
-  preference: boolean;
+  preference: string;
 }

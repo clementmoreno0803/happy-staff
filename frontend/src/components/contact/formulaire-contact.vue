@@ -89,7 +89,7 @@
       <label
         for="preference"
         class="switch-label"
-        :class="{ notChecked: formData.preference === false }"
+        :class="{ notChecked: formData.preference == 'Téléphone' }"
       >
         <span class="switch-switch">Téléphone</span>
       </label>
@@ -98,15 +98,16 @@
         name="preference"
         id="preference"
         v-model="formData.preference"
+        value="Email"
+        unchecked-value="Téléphone"
       />
       <label
         for="preference"
         class="switch-label"
-        :class="{ isChecked: formData.preference }"
+        :class="{ isChecked: formData.preference === 'Email' }"
       >
         <span class="switch-switch">Email</span>
       </label>
-      {{ formData }}
       <button type="submit">Envoyer</button>
     </div>
   </Form>
@@ -129,8 +130,6 @@ defineRule("required", (value: string) => {
   return true;
 });
 defineRule("email", (value: string) => {
-  console.log(value, "email");
-
   // Field is empty, should pass
   if (!value || !value.length) {
     return true;
@@ -157,7 +156,7 @@ const formData = ref<FormData>({
   name: "",
   tel: "",
   meeting: "",
-  preference: true,
+  preference: "Téléphone",
 });
 
 const selectOption = ref<SelectOption[]>([
@@ -171,10 +170,11 @@ const selectOption = ref<SelectOption[]>([
 
 <style lang="scss" scoped>
 .formulaire-contact {
-  // display: flex;
-  // justify-content: center;
-  // gap: $sm;
-  input[type="text"] {
+  width: 80vw;
+  margin: 0 auto;
+  text-align: left;
+  input[type="text"],
+  input[type="datetime-local"] {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -198,9 +198,10 @@ const selectOption = ref<SelectOption[]>([
   }
   &__radio-button {
     display: flex;
-    width: 50vw;
+    // width: 50vw;
     margin: 0 auto;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 30px;
     &__item {
       display: flex;
       margin-top: $sm;
@@ -238,11 +239,5 @@ const selectOption = ref<SelectOption[]>([
   .isChecked {
     color: red;
   }
-  // &::-webkit-calendar-picker-indicator {
-  //   background: url('data:image/svg+xml;charset=US-ASCII,<svg%20xmlns%3D"http%3A//www.w3.org/2000/svg"%20viewBox%3D"0%200%2044%2044"%3E<path%20fill%3D"%23007bff"%20d%3D"M22%2044c12.15%200%2022-9.85%2022-22S34.15%200%2022%200%200%209.85%200%2022s9.85%2022%2022%2022zm0-40C32.05%204%2040%2011.95%2040%2022S32.05%2040%2022%2040%204%2032.05%204%2022%2011.95%204%2022%204zm2%2010h-4v8H12v4h8v8h4v-8h8v-4h-8z"/%3E</svg>')
-  //     no-repeat right center;
-  //   opacity: 0.5;
-  //   pointer-events: none;
-  // }
 }
 </style>
