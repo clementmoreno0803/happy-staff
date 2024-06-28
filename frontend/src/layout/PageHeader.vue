@@ -26,7 +26,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 95vw;
-  margin: 0 auto 30px;
+  margin: $m auto 30px;
   a {
     &:-webkit-any-link {
       text-decoration: none;

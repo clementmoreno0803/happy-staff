@@ -22,7 +22,23 @@ const Company = sequelize.define('Company', {
     allowNull: false,
     required: true
   },
-  localisation: {
+  adresse: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  code_postal: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  ville: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  password: {
     type: DataTypes.STRING,
     allowNull: false,
   },

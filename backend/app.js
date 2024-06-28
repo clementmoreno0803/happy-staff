@@ -7,8 +7,11 @@ const userRoute = require('./routes/user');
 const jobOfferRoute = require('./routes/jobOffer');
 const companyRoute = require('./routes/company');
 const nodemailer = require('nodemailer');
+const cors = require('cors')
+
 
 app.use(express.json());
+app.use(cors());
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');

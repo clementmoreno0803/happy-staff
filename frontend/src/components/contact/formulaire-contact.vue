@@ -130,10 +130,10 @@ import { ref } from "vue";
 import { Form, Field, ErrorMessage } from "vee-validate";
 import { FormData } from "@/models/FormData";
 import { defineRule } from "vee-validate";
-import { UseFormulaireContact } from "@/composables/UseFormulaireContact";
+import { useFormulaireContact } from "@/composables/UseFormulaireContact";
 import { SelectOption } from "@/models/selectOption";
 
-const { sendFormulaireContact } = UseFormulaireContact();
+const { sendFormulaireContact } = useFormulaireContact();
 
 defineRule("required", (value: string) => {
   if (!value || !value.length) {

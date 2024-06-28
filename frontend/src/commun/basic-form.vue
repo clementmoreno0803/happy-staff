@@ -9,7 +9,6 @@
 <style lang="scss" scoped>
 .basic-form {
   &__container {
-    width: 100%;
     height: max-content;
     padding: $xl;
   }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Form>
+    <Form @submit="useUserLogin(loginVerification)">
       <legend for="Email">Adresse Mail :</legend>
       <Field
         type="text"
@@ -22,9 +22,11 @@
 </template>
 
 <script setup lang="ts">
+import { useLogin } from "@/composables/UseLogin";
 import { Form, Field, ErrorMessage } from "vee-validate";
 import { ref } from "vue";
 
+const { useUserLogin } = useLogin();
 const loginVerification = ref({ email: "", password: "" });
 </script>
 
@@ -33,7 +35,7 @@ legend {
   text-align: left;
 }
 input {
-  width: 100%;
+  min-width: 100%;
   text-align: left;
 }
 </style>
