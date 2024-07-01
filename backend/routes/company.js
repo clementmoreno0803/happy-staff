@@ -5,13 +5,13 @@ const companyController = require('../controllers/Company');
 const router = express.Router();
 
 //get
-router.get('/', auth,companyController.getAllCompany)
-router.get('/:id', auth, companyController.getCompany)
+router.get('/', companyController.getAllCompany)
+router.get('/:id', companyController.getCompany)
 //post
-router.post('/', auth,companyController.createCompany);
+router.post('/', companyController.createCompany);
 //put
-router.put('/:id', auth,companyController.updateCompany);
+router.put('/:id', companyController.updateCompany);
 //delete
-router.delete('/:id', auth,companyController.removeCompany);
+router.delete('/:id', companyController.removeCompany);
 
 module.exports = router;

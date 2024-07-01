@@ -18,7 +18,6 @@ exports.getCompany = (req, res) => {
 
 // Créer une nouvelle company
 exports.createCompany = (req, res) => {
-  console.log('ici');
   delete req.body.id
   const company = new Company({ ...req.body });
   company.save()

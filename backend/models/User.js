@@ -3,8 +3,7 @@ const sequelize = require('../config/database');
 
 const User = sequelize.define('User', {
   user_id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
+    type: DataTypes.STRING,
     primaryKey: true,
   },
     photoProfil: {
@@ -54,7 +53,8 @@ const User = sequelize.define('User', {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    required: true  },
+    required: true
+  },
   password: {
     type: DataTypes.STRING,
     allowNull: false,

@@ -1,5 +1,5 @@
 export interface User {
-  id: number;
+  user_id: string;
   photoProfil?: string;
   username: string;
   profession: string;
