@@ -28,7 +28,6 @@ bcrypt.hash(req.body.password, 10)
             'RANDOM_TOKEN_SECRET',
             { expiresIn: '24h' }
           );
-          // Créer un token après que l'utilisateur a été sauvegardé
           res.status(201).json({
             message: 'Utilisateur créé !',
             token: token

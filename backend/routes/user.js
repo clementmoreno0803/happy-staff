@@ -8,8 +8,8 @@ const router = express.Router();
 router.get('/',userController.getAllUser)
 router.get('/:id', userController.getUser)
 //post
-router.post('/', auth, userController.createUser);
-router.post('/login', auth, userController.login)
+router.post('/', userController.createUser);
+router.post('/login', userController.login)
 //put
 router.put('/:id',userController.updateUser);
 //delete
