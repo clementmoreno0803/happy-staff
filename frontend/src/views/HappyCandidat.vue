@@ -1,24 +1,32 @@
 <template>
   <div class="about">
-    <div v-for="user in users" :key="user">
-      {{ user }}
-    </div>
+    {{ user }}
     <h3>Prout</h3>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { User } from "@/models/User";
+import router from "@/router";
 import axios from "axios";
 import { onMounted, ref } from "vue";
-const users = ref([]);
+import { useRoute } from "vue-router";
+const user = ref({});
 
+const route = useRoute();
+const userId = ref(route.params.id);
 const getUsers = async () => {
   try {
-    console.log("running");
-    const response = await axios.get("http://localhost:3000/user");
-    console.log(response);
-    users.value = response.data;
+    const token = localStorage.getItem("token");
+    const response = await axios.get(
+      `http://localhost:3000/user/${userId.value}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    user.value = response.data;
   } catch (error) {
     console.log(error);
   }
