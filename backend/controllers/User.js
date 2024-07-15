@@ -23,35 +23,10 @@ exports.createUser = (req, res, next) => {
         password: hash
       });
       user.save()
-        .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
+        .then(() => res.status(201).json({ message: 'Utilisateur créé !', log: user }))
         .catch(error => res.status(400).json({ error }));
     })
     .catch(error => res.status(500).json({ error }));
-};
-
-exports.login = (req, res, next) => {
-   User.findOne({ email: req.body.email })
-       .then(user => {
-           if (!user) {
-               return res.status(401).json({ error: 'Utilisateur non trouver !' });
-           }
-           bcrypt.compare(req.body.password, user.password)
-               .then(valid => {
-                   if (!valid) {
-                       return res.status(401).json({ error: 'Mot de passe incorrectes !' });
-                   }
-                   res.status(200).json({
-                       userId: user.user_id,
-                       token: jwt.sign(
-                           { userId: user.user_id },
-                           'RANDOM_TOKEN_SECRET',
-                           { expiresIn: '24h' }
-                       )
-                  });
-               })
-               .catch(error => res.status(500).json(error));
-       })
-       .catch(error => res.status(500).json(error));
 };
 
 exports.updateUser = async (req, res, next) => {

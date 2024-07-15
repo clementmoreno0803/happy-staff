@@ -9,7 +9,6 @@ router.get('/', auth,userController.getAllUser)
 router.get('/:id', auth, userController.getUser)
 //post
 router.post('/', userController.createUser);
-router.post('/login', userController.login)
 //put
 router.put('/:id',userController.updateUser);
 //delete

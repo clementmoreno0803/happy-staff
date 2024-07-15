@@ -21,7 +21,7 @@ const JobOffer = sequelize.define('JobOffer', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  location: {
+  localisation: {
     type: DataTypes.STRING,
     allowNull: false,
   },

@@ -5,7 +5,7 @@ const companyController = require('../controllers/Company');
 const router = express.Router();
 
 //get
-router.get('/', companyController.getAllCompany)
+router.get('/', auth, companyController.getAllCompany)
 router.get('/:id', companyController.getCompany)
 //post
 router.post('/', companyController.createCompany);

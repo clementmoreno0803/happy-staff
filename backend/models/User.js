@@ -27,8 +27,8 @@ const User = sequelize.define('User', {
   },
   ancienneEntreprise: {
     type: DataTypes.STRING,
-    allowNull: false,
-    required: true
+    allowNull: true,
+    required: false
   },
   numeroTel: {
     type: DataTypes.STRING,
@@ -59,6 +59,11 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false,
     required: true
+  },
+  numero_siret: {
+    type: DataTypes.STRING,
+    required: false,
+    allowNull: true,
   },
   created_at: {
     type: DataTypes.DATE,

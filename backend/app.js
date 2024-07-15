@@ -6,8 +6,9 @@ const applicationRoutes = require('./routes/applications');
 const userRoute = require('./routes/user');
 const jobOfferRoute = require('./routes/jobOffer');
 const companyRoute = require('./routes/company');
+const authRoute = require('./routes/auth');
 const nodemailer = require('nodemailer');
-const cors = require('cors')
+const cors = require('cors');
 
 
 app.use(express.json());
@@ -24,6 +25,7 @@ app.use('/applications', applicationRoutes);
 app.use('/user', userRoute);
 app.use('/jobOffer', jobOfferRoute);
 app.use('/company', companyRoute);
+app.use('/', authRoute)
 
 // Envoie des mails sur Gmail
 const transporter = nodemailer.createTransport({
