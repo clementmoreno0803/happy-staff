@@ -1,5 +1,11 @@
 <template>
   <div class="nosOffres__container">
-    <h1>Nos offres</h1>
+    <offreHeader></offreHeader>
   </div>
 </template>
+
+<script setup lang="ts">
+import offreHeader from "@/components/offres/offre-header.vue";
+</script>
+
+<style lang="scss" scoped></style>

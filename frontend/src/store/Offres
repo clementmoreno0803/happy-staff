@@ -1,3 +1,10 @@
 import { defineStore } from "pinia";
+import { computed, ref } from "vue";
 
-export const offreStore = defineStore("offreStore", {});
+export const useOffreStore = defineStore("offreStore", () => {
+  const offres = ref([]);
+
+  const allOffres = computed(() => offres.value.length);
+
+  return { offres, allOffres };
+});

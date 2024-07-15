@@ -1,12 +1,5 @@
 <template>
   <Form @submit="useEnregistrementPersonnePhysique(user)">
-    <legend for="photoProfil">Photo de profil</legend>
-    <Field
-      type="file"
-      v-model="user.photoProfil"
-      id="photoProfil"
-      name="photoProfil"
-    ></Field>
     <legend for="username">Nom complet</legend>
     <Field
       type="text"
@@ -21,19 +14,12 @@
       id="profession"
       name="profession"
     ></Field>
-    <legend for="experience">Votre expérience</legend>
+    <legend for="experience">experience</legend>
     <Field
       type="text"
       v-model="user.experience"
       id="experience"
       name="experience"
-    ></Field>
-    <legend for="ancienneEntreprise">Ancienne entreprise</legend>
-    <Field
-      type="text"
-      v-model="user.ancienneEntreprise"
-      id="ancienneEntreprise"
-      name="expancienneEntrepriseerience"
     ></Field>
     <legend for="adresse">Adresse</legend>
     <Field
@@ -57,6 +43,21 @@
       v-model="user.numeroTel"
       id="numeroTel"
       name="numeroTel"
+    ></Field>
+    <span class="enregistrement__separateur"></span>
+    <legend for="company-name">Raison Sociale</legend>
+    <Field
+      type="text"
+      v-model="user.company_name"
+      id="company-name"
+      name="company-name"
+    ></Field>
+    <legend for="numero-siret">Numero de Siret</legend>
+    <Field
+      type="text"
+      v-model="user.numero_siret"
+      id="numero-siret"
+      name="numero-siret"
     ></Field>
     <legend for="email">Email</legend>
     <Field type="text" v-model="user.email" id="email" name="email"></Field>
@@ -83,14 +84,14 @@ const { useEnregistrementPersonnePhysique } = useFormulaireEnregistrement();
 
 const user = ref<User>({
   user_id: uuidv4(),
-  photoProfil: undefined,
   username: "",
-  profession: "",
-  ancienneEntreprise: "",
+  company_name: "",
+  numero_siret: "",
   numeroTel: "",
   adresse: "",
   codePostal: "",
   ville: "",
+  profession: "",
   experience: "",
   email: "",
   password: "",

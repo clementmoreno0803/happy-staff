@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <div v-for="company in companies" :key="company.id">
+    <div v-for="company in companies" :key="company">
       {{ company }}
     </div>
     <h3>Prout</h3>
@@ -14,9 +14,11 @@ const companies = ref([]);
 
 const getCompany = async () => {
   try {
-    console.log("running");
-    const response = await axios.get("http://localhost:3000/company");
-    console.log(response);
+    const response = await axios.get(`http://localhost:3000/company/`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      },
+    });
     companies.value = response.data;
   } catch (error) {
     console.log(error);

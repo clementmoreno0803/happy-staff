@@ -7,6 +7,7 @@
         v-model="loginVerification.email"
         name="email"
         id="Email"
+        required
       />
       <legend for="Password">Mot de passe :</legend>
       <Field
@@ -14,6 +15,7 @@
         v-model="loginVerification.password"
         name="password"
         id="Password"
+        required
       />
       <button type="submit">Se connecter</button>
     </Form>
