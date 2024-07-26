@@ -15,8 +15,6 @@ export const useFormulaireService = () => {
   };
 
   const useFormulairePM = async (pmData: Employeur) => {
-    console.log("PM");
-
     try {
       await axios.post("http://localhost:3000/register/morale", pmData);
       console.log(`message bien envoyé avec ${pmData}`);
@@ -26,8 +24,6 @@ export const useFormulaireService = () => {
   };
 
   const useFormulairePP = async (ppData: User) => {
-    console.log("PP");
-
     try {
       await axios.post("http://localhost:3000/register/physique", ppData);
       console.log(`message bien envoyé avec ${ppData}`);

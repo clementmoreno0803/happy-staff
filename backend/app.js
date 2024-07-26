@@ -62,8 +62,7 @@ app.post('/send-email', (req, res) => {
   });
 });
 
-// Synchroniser les modèles et démarrer le serveur
-sequelize.sync({ force: true }).then(() => {  // force: true réinitialise les tables
+sequelize.sync({ force: false }).then(() => {
   app.listen(3000, () => {
     console.log('Server is running on port 3000');
   });

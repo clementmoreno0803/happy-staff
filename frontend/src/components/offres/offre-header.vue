@@ -4,7 +4,7 @@
       <template #title>
         <h2>Toute les offres</h2>
       </template>
-      <template #content>{{ allOffres }}</template>
+      <template #content>{{ offresSize }}</template>
     </BasicInfoCard>
     <BasicInfoCard>
       <template #title>
@@ -34,14 +34,14 @@
 
 <script setup lang="ts">
 import BasicInfoCard from "@/commun/basic-info-card.vue";
-import { useOffreStore } from "@/store/Offres";
+import { OffreStore } from "@/store/Offres";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import offreModal from "./offre-modal.vue";
 import offreCreation from "./offre-creation.vue";
 
-const offreStore = useOffreStore();
-const { allOffres } = storeToRefs(offreStore);
+const offreStore = OffreStore();
+const { offresSize } = storeToRefs(offreStore);
 const openModal = ref(false);
 
 const user = sessionStorage.getItem("user");
@@ -51,6 +51,13 @@ const addOffre = () => {
 const closeModal = () => {
   openModal.value = false;
 };
+
+import { onMounted } from "vue";
+import { useFormulaireCreationOffre } from "@/composables/UseOffers";
+
+const { AllOffersArray } = useFormulaireCreationOffre();
+
+onMounted(() => AllOffersArray);
 </script>
 <style lang="scss" scoped>
 h2 {

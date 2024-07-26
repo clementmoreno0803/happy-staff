@@ -29,7 +29,6 @@ const urlImg = ref(cuisineImage);
 .login {
   &__container {
     width: 95vw;
-    height: auto;
     margin: 0 auto;
   }
   &__basic-presentation {
@@ -39,6 +38,7 @@ const urlImg = ref(cuisineImage);
       justify-content: space-between;
       padding: $l $xxl;
       height: 100%;
+      min-height: 500px;
       & h2 {
         font-family: $poppins;
         font-size: clamp($l, 2vw, 20rem);

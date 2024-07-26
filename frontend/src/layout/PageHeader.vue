@@ -27,7 +27,7 @@
         <router-link v-if="!user" to="/LogIn">Se connecter</router-link>
         <li v-if="user"><a @click="logout">Logout</a></li>
         <router-link to="/espace-enregistrement">
-          <span class="enregistrement">S'enregistrer</span>
+          <span v-if="!user" class="enregistrement">S'enregistrer</span>
         </router-link>
       </div>
     </nav>

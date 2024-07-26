@@ -3,6 +3,7 @@ export interface JobOffer {
   title: string;
   description: string;
   requirements: string;
-  location: string;
+  localisation: string;
   salary: string;
+  company_id: string | null;
 }

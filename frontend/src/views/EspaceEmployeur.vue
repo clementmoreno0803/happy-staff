@@ -1,31 +1,16 @@
 <template>
   <div class="about">
-    <div v-for="company in companies" :key="company">
-      {{ company }}
-    </div>
-    <h3>Prout</h3>
+    <h2>{{ getMyCompany() }}</h2>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useCompany } from "@/composables/UseCompany";
+import { CompanyStore } from "@/store/Company";
 import axios from "axios";
-import { onMounted, ref } from "vue";
-const companies = ref([]);
+import { storeToRefs } from "pinia";
+import { computed, onMounted, ref } from "vue";
+const { SetMyCompany, getMyCompany } = useCompany();
 
-const getCompany = async () => {
-  try {
-    const response = await axios.get(`http://localhost:3000/company/`, {
-      headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-      },
-    });
-    companies.value = response.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-onMounted(() => {
-  getCompany();
-});
+onMounted(() => SetMyCompany());
 </script>

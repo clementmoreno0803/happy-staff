@@ -5,7 +5,7 @@
       <template #content>
         <basicForm>
           <template #form>
-            <Form>
+            <Form @submit.prevent="offerCreation(jobOffer)">
               <legend for="title">Titre du poste</legend>
               <Field
                 type="text"
@@ -48,7 +48,7 @@
       <template #action-btn>
         <button
           type="submit"
-          @click="$emit('close-modal')"
+          @click="offerCreation(jobOffer)"
           class="basic-modal__home-btn"
         >
           Créer mon offre
@@ -63,14 +63,20 @@ import basicModal from "@/commun/basic-modal.vue";
 import basicForm from "@/commun/basic-form.vue";
 import { defineEmits, ref } from "vue";
 import { Form, Field } from "vee-validate";
+import { v4 as uuidv4 } from "uuid";
+import { useFormulaireCreationOffre } from "@/composables/UseOffers";
+import { JobOffer } from "@/models/JobOffer";
 
 defineEmits(["close-modal"]);
-const jobOffer = ref({
+const { offerCreation } = useFormulaireCreationOffre();
+const jobOffer = ref<JobOffer>({
+  id: uuidv4(),
   title: "",
   description: "",
   requirements: "",
   localisation: "",
   salary: "",
+  company_id: sessionStorage.getItem("user"),
 });
 </script>
 
