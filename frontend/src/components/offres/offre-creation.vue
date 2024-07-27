@@ -70,7 +70,7 @@ import { JobOffer } from "@/models/JobOffer";
 defineEmits(["close-modal"]);
 const { offerCreation } = useFormulaireCreationOffre();
 const jobOffer = ref<JobOffer>({
-  id: uuidv4(),
+  job_id: uuidv4(),
   title: "",
   description: "",
   requirements: "",

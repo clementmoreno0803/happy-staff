@@ -3,8 +3,7 @@ const sequelize = require('../config/database');
 
 const Company = sequelize.define('Company', {
   company_id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
+    type: DataTypes.STRING,
     primaryKey: true,
   },
   company_name: {

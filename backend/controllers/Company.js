@@ -35,7 +35,6 @@ exports.createCompany = (req, res) => {
 }
 
 exports.login = (req, res, next) => {
-  console.log('OOOOOOOOOOOOOOOOHHHHHHH');
    Company.findOne({ email: req.body.email })
        .then(company => {
            if (!company) {

@@ -1,5 +1,5 @@
 export interface JobOffer {
-  id: number;
+  job_id: number;
   title: string;
   description: string;
   requirements: string;

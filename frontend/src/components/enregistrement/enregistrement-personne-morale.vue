@@ -38,7 +38,7 @@
     <legend for="codePostal">Code postal</legend>
     <Field
       type="text"
-      v-model="companyData.codePostal"
+      v-model="companyData.code_postal"
       id="codePostal"
       name="codePostal"
     ></Field>
@@ -77,7 +77,7 @@ import { useFormulaireEnregistrement } from "@/composables/UseFormulaireEnregist
 const { useEnregistrementPersonneMorale } = useFormulaireEnregistrement();
 
 const companyData = ref<Employeur>({
-  id: uuidv4(),
+  company_id: uuidv4(),
   company_name: "",
   numero_siret: "",
   description: "",

@@ -1,5 +1,5 @@
 export interface Employeur {
-  id: number;
+  company_id: number;
   company_name: string;
   numero_siret: string;
   description: string;

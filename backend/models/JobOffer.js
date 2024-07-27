@@ -3,8 +3,7 @@ const sequelize = require('../config/database');
 
 const JobOffer = sequelize.define('JobOffer', {
   job_id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
+    type: DataTypes.STRING,
     primaryKey: true,
   },
   title: {
@@ -30,11 +29,11 @@ const JobOffer = sequelize.define('JobOffer', {
     allowNull: false,
   },
     company_id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
     references: {
-      model: "JobOffer",
-      key: 'job_id',
+      model: "Company",
+      key: 'company_id',
     },
   },
   created_at: {

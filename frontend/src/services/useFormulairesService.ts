@@ -3,6 +3,7 @@ import { FormData } from "@/models/FormData";
 import { User } from "@/models/User";
 import { Employeur } from "@/models/Employeur";
 import { Login } from "@/models/Login";
+import { UserStatutEnum } from "@/models/enums/UserStatutEnum";
 
 export const useFormulaireService = () => {
   const sendFormulaireToApi = async (formdata: FormData) => {
@@ -39,7 +40,7 @@ export const useFormulaireService = () => {
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("user", userId);
       sessionStorage.setItem("statut", statut);
-      if (statut === "particulier") {
+      if (statut === UserStatutEnum.PARTICULIER) {
         window.location.href = `happy-candidat/${userId}`;
       } else {
         window.location.href = `espace-employeur/${userId}`;
