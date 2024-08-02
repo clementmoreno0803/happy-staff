@@ -15,6 +15,7 @@ export const useFormulaireCreationOffre = () => {
   };
   const AllOffersArray = async () => {
     const AllOffers = await getAllOffers();
+    console.log("allOffers", AllOffers);
     offres.value = [...AllOffers];
   };
 

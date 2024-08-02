@@ -6,9 +6,8 @@ const Application = require('../models/Application');
 // Obtenir toutes les applications
 exports.getAllApplications = (req, res) => {
   Application.findAll()
-    .then(applications => res.statut(200).json(applications))
-    .catch(error =>
-      res.status(500).json({ error: error.message }))
+    .then(application => res.status(200).json(application))
+    .catch(error => res.status(404).json(error))
 }
 
 exports.getApplication = (req, res) => {

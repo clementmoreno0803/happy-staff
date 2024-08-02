@@ -3,12 +3,11 @@ const sequelize = require('../config/database');
 
 const Application = sequelize.define('Application', {
   application_id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
+    type: DataTypes.STRING,
     primaryKey: true,
   },
   user_id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
     references: {
       model: "User",
@@ -16,7 +15,7 @@ const Application = sequelize.define('Application', {
     },
   },
   job_id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
     references: {
       model: "JobOffer",
@@ -25,7 +24,7 @@ const Application = sequelize.define('Application', {
   },
   status: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
 }, {
   timestamps: false,

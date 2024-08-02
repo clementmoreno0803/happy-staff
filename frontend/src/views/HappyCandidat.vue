@@ -1,38 +1,23 @@
 <template>
   <div class="about">
-    {{ user }}
-    <h3>Prout</h3>
+    <h2>Mes candidatures</h2>
+    <h3>{{ userApplication }}</h3>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { User } from "@/models/User";
-import router from "@/router";
-import axios from "axios";
-import { onMounted, ref } from "vue";
-import { useRoute } from "vue-router";
-const user = ref({});
+import { computed, onMounted } from "vue";
+import { useApplication } from "@/composables/UseApplication";
+import { useFormulaireCreationOffre } from "@/composables/UseOffers";
 
-const route = useRoute();
-const userId = ref(route.params.id);
-const getUsers = async () => {
-  try {
-    const token = localStorage.getItem("token");
-    const response = await axios.get(
-      `http://localhost:3000/user/${userId.value}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    user.value = response.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+const { getUserApplication, getAllApplication } = useApplication();
+const { AllOffersArray } = useFormulaireCreationOffre();
+
+const userApplication = computed(() => getUserApplication());
 
 onMounted(() => {
-  getUsers();
+  AllOffersArray();
+  getUserApplication();
+  getAllApplication();
 });
 </script>
