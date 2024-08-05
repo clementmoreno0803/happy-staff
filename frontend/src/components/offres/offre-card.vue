@@ -1,19 +1,17 @@
 <template>
   <div>
-    <basicInfoCard v-for="offre in offres" :key="offre.job_id">
-      <template #title>{{ offre.title }}</template>
+    <basicInfoCard v-for="offre in offres" :key="offre.id">
+      <template #title>{{ offre.titre }}</template>
       <template #content>
         <h2>{{ offre.description }}</h2>
         <h2>{{ offre.localisation }}</h2>
-        <h2>{{ offre.requirements }}</h2>
-        <h2>{{ offre.salary }}</h2>
+        <h2>{{ offre.horaires }}</h2>
+        <h2>{{ offre.salaire }}</h2>
       </template>
       <template #action-btn>
         <button
           v-if="isParticulier === UserStatutEnum.PARTICULIER"
-          @click="
-            createApplication({ ...newApplication, job_id: offre.job_id })
-          "
+          @click="createApplication({ ...newApplication, job_id: offre.id })"
         >
           Je postule
         </button>

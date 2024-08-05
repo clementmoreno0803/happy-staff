@@ -5,7 +5,6 @@ const JobOffer = require('../models/JobOffer');
 
 // Obtenir toutes les jobOffers
 exports.getAlljobOffer = (req, res) => {
-  console.log(JobOffer.findAll());
 JobOffer.findAll()
 .then(jobOffer => res.status(200).json(jobOffer))
 .catch(error => res.status(404).json(error))
@@ -19,6 +18,7 @@ exports.getjobOffer = (req, res) => {
 
 // Créer une nouvelle offre
 exports.createjobOffer = (req, res) => {
+  delete req.body.job_id;
   const jobOffer = new JobOffer({ ...req.body });
   jobOffer.save()
     .then(() => res.status(200).json({ jobOffer: jobOffer.dataValues }))

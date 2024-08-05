@@ -8,8 +8,6 @@ export const veeValidateRules = () => {
     return true;
   });
   const email = defineRule("email", (value: string) => {
-    console.log(value, "email");
-
     // Field is empty, should pass
     if (!value || !value.length) {
       return true;

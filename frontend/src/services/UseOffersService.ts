@@ -1,3 +1,4 @@
+import { offresDtoToOffres } from "@/mappers/OffresDtoToOffre";
 import { JobOffer } from "@/models/JobOffer";
 import axios from "axios";
 
@@ -8,7 +9,9 @@ export const useOfferService = () => {
         "http://localhost:3000/jobOffer",
         jobOffer
       );
-      return response.data.jobOffer;
+      return response.data
+        ? response.data.map((resp: JobOffer) => offresDtoToOffres(resp))
+        : [];
     } catch (error) {
       console.log(error);
     }
@@ -16,7 +19,9 @@ export const useOfferService = () => {
   const getAllOffers = async () => {
     try {
       const response = await axios.get("http://localhost:3000/jobOffer");
-      return response.data;
+      return response.data
+        ? response.data.map((resp: JobOffer) => offresDtoToOffres(resp))
+        : [];
     } catch (error) {
       console.log(error);
     }

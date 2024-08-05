@@ -1,4 +1,5 @@
 import { JobOffer } from "@/models/JobOffer";
+import { Offers } from "@/models/Offers";
 import { useOfferService } from "@/services/UseOffersService";
 import { OffreStore } from "@/store/Offres";
 import { storeToRefs } from "pinia";
@@ -15,13 +16,16 @@ export const useFormulaireCreationOffre = () => {
   };
   const AllOffersArray = async () => {
     const AllOffers = await getAllOffers();
-    console.log("allOffers", AllOffers);
-    offres.value = [...AllOffers];
+    updateOffres(AllOffers);
   };
 
   const getAllOffersArray = () => {
-    return offres.value;
+    return offres.value.flat();
   };
 
-  return { offerCreation, AllOffersArray, getAllOffersArray };
+  return {
+    offerCreation,
+    AllOffersArray,
+    getAllOffersArray,
+  };
 };

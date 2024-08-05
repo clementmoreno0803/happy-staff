@@ -7,7 +7,7 @@ import { storeToRefs } from "pinia";
 export const useApplication = () => {
   const { getApplicationArray, createNewApplication } = useApplicationService();
   const { applications } = storeToRefs(ApplicationStore());
-  const { offres } = OffreStore();
+  const { offres } = storeToRefs(OffreStore());
 
   const getAllApplication = async () => {
     const applicationArray = await getApplicationArray();
@@ -20,14 +20,21 @@ export const useApplication = () => {
 
   const getUserApplication = () => {
     const userId = sessionStorage.getItem("user");
+
     const userApplications = applications.value.filter(
       (app) => app.user_id === userId
     );
     const userJobIds = userApplications.map((app) => app.job_id);
-    const userRelatedJobs = offres.filter((job) =>
-      userJobIds.includes(job.job_id)
+
+    const flatOffers = offres.value.flat();
+    const userRelatedJobs = flatOffers.filter((offer) =>
+      userJobIds.includes(offer.id)
     );
     return userRelatedJobs;
   };
-  return { getAllApplication, createApplication, getUserApplication };
+  return {
+    getAllApplication,
+    createApplication,
+    getUserApplication,
+  };
 };
