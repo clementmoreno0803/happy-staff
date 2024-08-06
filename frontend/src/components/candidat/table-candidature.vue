@@ -49,6 +49,9 @@ onMounted(() => {
       background: $white;
       text-overflow: ellipsis;
       border-radius: $m;
+      p {
+        margin: 0;
+      }
       .profession {
         width: fit-content;
         margin: 0 auto;
